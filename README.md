@@ -1,14 +1,22 @@
-**Multi-style Generative Network for Real-time Transfer**  [[arXiv](https://arxiv.org/pdf/1703.06953.pdf)] [[project](http://computervisionrutgers.github.io/MSG-Net/)]  
-  [Hang Zhang](http://hangzh.com/),  [Kristin Dana](http://eceweb1.rutgers.edu/vision/dana.html)
-```
+<table width="100%" border="0" cellspacing="15" cellpadding="0">
+	<tbody>
+		<tr>
+			<td>
+			<b>Multi-style Generative Network for Real-time Transfer</b>  [<a href="https://arxiv.org/pdf/1703.06953.pdf">arXiv]</a>] [<a href="http://computervisionrutgers.github.io/MSG-Net/">project</a>]  <br>
+  <a href="http://hangzh.com/">Hang Zhang</a>,  <a href="http://eceweb1.rutgers.edu/vision/dana.html">Kristin Dana</a>
+<pre>
 @article{zhang2017multistyle,
 	title={Multi-style Generative Network for Real-time Transfer},
 	author={Zhang, Hang and Dana, Kristin},
 	journal={arXiv preprint arXiv:1703.06953},
 	year={2017}
 }
-```
-<div><img src ="images/figure1.jpg" width="500" /></div>	
+</pre>
+			</td>
+			<td width="440"><a><img src ="https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/images/figure1.jpg" width="420px" border="1"></a></td>
+		</tr>
+	</tbody>
+</table>
 
 ### Table of Contents
 0. [Demo Video](#demo-video)
