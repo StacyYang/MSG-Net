@@ -1,5 +1,4 @@
 build.luarocks/
-experiments/data/
 *.DS_Store
 *.swp
 *.t7
