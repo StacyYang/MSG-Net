@@ -2,7 +2,7 @@
 	<tbody>
 		<tr>
 			<td>
-			<b>Multi-style Generative Network for Real-time Transfer</b>  [<a href="https://arxiv.org/pdf/1703.06953.pdf">arXiv]</a>] [<a href="http://computervisionrutgers.github.io/MSG-Net/">project</a>]  <br>
+			<b>Multi-style Generative Network for Real-time Transfer</b>  [<a href="https://arxiv.org/pdf/1703.06953.pdf">arXiv</a>] [<a href="http://computervisionrutgers.github.io/MSG-Net/">project</a>]  <br>
   <a href="http://hangzh.com/">Hang Zhang</a>,  <a href="http://eceweb1.rutgers.edu/vision/dana.html">Kristin Dana</a>
 <pre>
 @article{zhang2017multistyle,
