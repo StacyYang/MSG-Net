@@ -39,7 +39,7 @@ local function main()
 	
 	local featpath = opt.style_image_folder .. '/feat.t7'
 	if not paths.filep(featpath) then
-		local extractor = require "extractGram.lua"
+		local extractor = require "extractGram"
 		extractor.exec(opt)
 	end
 
