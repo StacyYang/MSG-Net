@@ -74,8 +74,8 @@ local function main()
 		local img_pre = preprocess.preprocess(img:view(1, 3, H, W)):type(dtype)
 	
 		-- update style image
-		if (idx-1) % 50 == 0 then
-			local i=torch.floor((idx-1)/50)%styleLoader:size()+1
+		if (idx-1) % 15 == 0 then
+			local i=torch.floor((idx-1)/15)%styleLoader:size()+1
 			style_image = styleLoader:get(i):float()
 			model:setTarget(feat[i], dtype)
   	end
