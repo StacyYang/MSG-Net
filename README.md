@@ -48,6 +48,7 @@ luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/
 	```
 	qlua webcam.lua
 	```
+	![](images/myimage.gif)
 0. Test on Image
 	```
 	th test.lua -input_image images/content/venice-boat.jpg -image_size 1024
