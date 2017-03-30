@@ -73,7 +73,12 @@ function M.parse(arg)
 	cmd:option('-image_size', 512)
 	cmd:option('-median_filter', 3)
 
-
+	-- Webcam options
+	cmd:option('-webcam_idx', 0)
+	cmd:option('-webcam_fps', 30)
+	cmd:option('-height', 480)
+	cmd:option('-width', 640)
+	
 	local opt = cmd:parse(arg or {})
 	return opt
 end

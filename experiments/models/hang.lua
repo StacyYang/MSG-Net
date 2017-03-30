@@ -144,18 +144,6 @@ function M.createModel(opt)
 	local model = nn.Sequential()
 	model.cNetsNum = {}
 
-	local function inspirationBlock()
-  	local concat = nn.ConcatTable():add(nn.Inspiration(iChannels)):add(nn.Identity())
-  	-- Sum
-  	local ins_block = nn.Sequential()
-  	ins_block:add(concat)
-  	ins_block:add(nn.CAddTable())
-		function ins_block:setTarget(target)
-			ins_block.modules[1].modules[1]:setTarget(target)
-		end
-		return ins_block
-	end
-
 	-- 512x512
 	model:add(normalization(3))
 	model:add(pad(3, 3, 3, 3))
@@ -168,7 +156,6 @@ function M.createModel(opt)
 	
 	-- 512x512x64
 	model:add(nn.Inspiration(iChannels))
-	--model:add(inspirationBlock())
 	table.insert(model.cNetsNum,#model)
 	model:add(normalization(iChannels))
 	model:add(nn.ReLU(true))
@@ -176,7 +163,6 @@ function M.createModel(opt)
 
 	-- 256x256x128
 	model:add(nn.Inspiration(iChannels))
-	--model:add(inspirationBlock())
 	table.insert(model.cNetsNum,#model)
 	model:add(normalization(iChannels))
 	model:add(nn.ReLU(true))
@@ -184,7 +170,6 @@ function M.createModel(opt)
 	
 	-- 128x128x256
 	model:add(nn.Inspiration(iChannels))
-	--model:add(inspirationBlock())
 	table.insert(model.cNetsNum,#model)
 	model:add(normalization(iChannels))
 	model:add(nn.ReLU(true))
@@ -192,7 +177,6 @@ function M.createModel(opt)
 	
 	-- 64x64x512
 	model:add(nn.Inspiration(iChannels))
-	--model:add(inspirationBlock())
 	table.insert(model.cNetsNum,#model)
 	model:add(normalization(iChannels))
 	model:add(nn.ReLU(true))

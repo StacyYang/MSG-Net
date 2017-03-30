@@ -9,10 +9,8 @@ local opts = require 'opts'
 local function main()
 	local opt = opts.parse(arg)
 	
-  models = require('models/' .. opt.model)
-
-	if (opt.input_image == '') and (opt.input_dir == '') then
-    error('Must give exactly one of -input_image or -input_dir')
+	if (opt.input_image == '') then
+    error('Must give exactly one of -input_image')
   end
 
   local dtype, use_cudnn = utils.setup_gpu(opt.gpu, opt.backend, opt.use_cudnn == 1)
@@ -61,19 +59,7 @@ local function main()
 			local style_image = styleLoader:get(i)
 			model:setTarget(feat[i], dtype)
     
-			if opt.timing == 1 then
-      	-- Do an extra forward pass to warm up memory and cuDNN
-      	model:forward(img_pre)
-      	timer = torch.Timer()
-      	if cutorch then cutorch.synchronize() end
-    	end
 			local img_out = model:forward(img_pre)
-			if opt.timing == 1 then
-     		if cutorch then cutorch.synchronize() end
-      	local time = timer:time().real
-      	print(string.format('Image %s (%d x %d) took %f',
-            in_path, H, W, time))
-    	end
 			local img_out = preprocess.deprocess(img_out)[1]
     	if opt.median_filter > 0 then
       	img_out = utils.median_filter(img_out, opt.median_filter)
