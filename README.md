@@ -50,9 +50,17 @@ luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/
 	```
 0. Test on Image
 	```
-	th test.lua -input_image path/to/the/image -image_size 1024
+	th test.lua -input_image images/content/venice-boat.jpg -image_size 1024
 	eog stylized
 	```
+<img src ="images/stylized/1.jpg" width="260px" /><img src ="images/stylized/2.jpg" width="260px" />
+<img src ="images/stylized/3.jpg" width="260px" />
+<img src ="images/stylized/4.jpg" width="260px" />
+<img src ="images/stylized/5.jpg" width="260px" />
+<img src ="images/stylized/6.jpg" width="260px" />
+<img src ="images/stylized/7.jpg" width="260px" />
+<img src ="images/stylized/8.jpg" width="260px" />
+<img src ="images/stylized/9.jpg" width="260px" />
 
 ### Train Your Own Model
 We are working on cleaning the training code, but we may decide to release it upon paper acceptance.
