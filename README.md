@@ -21,7 +21,7 @@
 ### Table of Contents
 0. [Demo Video](#demo-video)
 0. [Installation](#installation)
-0. [Test on New Images](#test-on-new-images)
+0. [Test and Demo](#test-and-demo)
 0. [Train Your Own Model](#train-your-own-model)
 0. [Release Timeline](#release-timeline)
 0. [Acknowledgement](#acknowledgement)
@@ -36,7 +36,7 @@ Please install [Torch7](http://torch.ch/) with cuda and cudnn support. The code 
 luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/texture-scm-1.rockspec
 ```
 
-### Test on New Images
+### Test and Demo
 
 0. Clone the repo and download pre-trained models
 	```bash
@@ -44,24 +44,24 @@ luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/
 	cd MSG-Net/experiments
 	bash models/download_models.sh 
 	```
-0. Test the model
+0. Web Camera Demo
 	```
-	th test.lua
-	eog stylized
+	qlua webcam.lua
 	```
-0. Test on new image
+0. Test on Image
 	```
 	th test.lua -input_image path/to/the/image -image_size 1024
+	eog stylized
 	```
 
 ### Train Your Own Model
 We are working on cleaning the training code, but we may decide to release it upon paper acceptance.
 
 ### Release Timeline
-- 03/20/2017 we have released the [demo video](https://www.youtube.com/watch?v=oy6pWNWBt4Y).
-- 03/24/2017 We have released [ArXiv paper](https://arxiv.org/pdf/1703.06953.pdf) and demo code with pre-trained models.
-- 03/31/2017 Release the code for camera or video demo.
-- We are working on cleaning the training code, but we may decide to release it upon paper acceptance.
+- [x] 03/20/2017 we have released the [demo video](https://www.youtube.com/watch?v=oy6pWNWBt4Y).
+- [x] 03/24/2017 We have released [ArXiv paper](https://arxiv.org/pdf/1703.06953.pdf) and demo code with pre-trained models.
+- [x] 03/30/2017 We have released the camera demo software.
+- [ ] We are working on cleaning the training code, but we may decide to release it upon paper acceptance.
 
 ### Acknowledgement
 The code benefits from outstanding prior work and their implementations including:
