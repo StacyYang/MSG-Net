@@ -26,7 +26,7 @@
 0. [Acknowledgement](#acknowledgement)
 
 ### Demo Video 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/oy6pWNWBt4Y/0.jpg)](http://www.youtube.com/watch?v=oy6pWNWBt4Y "Video Title")
+<a  href="http://www.youtube.com/watch?v=oy6pWNWBt4Y"><img src="http://img.youtube.com/vi/oy6pWNWBt4Y/0.jpg" width="400" /></a>
 
 ### Installation
 Please install [Torch7](http://torch.ch/) with cuda and cudnn support. The code has been tested on Ubuntu 16.04 with Titan X Pascal and Maxwell.
@@ -46,6 +46,7 @@ luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/
 	```
 	qlua webcam.lua
 	```
+	![](images/myimage.gif)
 0. Test on Image
 	```
 	th test.lua -input_image images/content/venice-boat.jpg -image_size 1024
