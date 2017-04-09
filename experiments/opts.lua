@@ -48,7 +48,7 @@ function M.parse(arg)
 	cmd:option('-style_layers', '4,9,16,23')
 
 	-- Optimization
-	cmd:option('-num_iterations', 800000)
+	cmd:option('-num_iterations', 80000)
 	cmd:option('-max_train', -1)
 	cmd:option('-batch_size', 4)
 	cmd:option('-learning_rate', 1e-3)

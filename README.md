@@ -23,9 +23,7 @@
 0. [Installation](#installation)
 0. [Test and Demo](#test-and-demo)
 0. [Train Your Own Model](#train-your-own-model)
-0. [Release Timeline](#release-timeline)
 0. [Acknowledgement](#acknowledgement)
-0. [Example Results](Examples.md)
 
 ### Demo Video 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/oy6pWNWBt4Y/0.jpg)](http://www.youtube.com/watch?v=oy6pWNWBt4Y "Video Title")
@@ -53,7 +51,7 @@ luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/
 	th test.lua -input_image images/content/venice-boat.jpg -image_size 1024
 	eog stylized
 	```
-<img src ="images/stylized/1.jpg" width="260px" /><img src ="images/stylized/2.jpg" width="260px" />
+<img src ="images/stylized/1.jpg" width="260px" /> <img src ="images/stylized/2.jpg" width="260px" />
 <img src ="images/stylized/3.jpg" width="260px" />
 <img src ="images/stylized/4.jpg" width="260px" />
 <img src ="images/stylized/5.jpg" width="260px" />
@@ -62,14 +60,16 @@ luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/
 <img src ="images/stylized/8.jpg" width="260px" />
 <img src ="images/stylized/9.jpg" width="260px" />
 
+[[More Example Results](Examples.md)]
+
 ### Train Your Own Model
-We are working on cleaning the training code, but we may decide to release it upon paper acceptance.
+Please follow [this tutorial to train a new model](Training.md). 
 
 ### Release Timeline
 - [x] 03/20/2017 we have released the [demo video](https://www.youtube.com/watch?v=oy6pWNWBt4Y).
 - [x] 03/24/2017 We have released [ArXiv paper](https://arxiv.org/pdf/1703.06953.pdf) and demo code with pre-trained models.
 - [x] 03/30/2017 We have released the camera demo software.
-- [ ] We are working on cleaning the training code, but we may decide to release it upon paper acceptance.
+- [x] 04/09/2017 We have released the training code.
 
 ### Acknowledgement
 The code benefits from outstanding prior work and their implementations including:
