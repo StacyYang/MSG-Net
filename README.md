@@ -18,16 +18,6 @@
 	</tbody>
 </table>
 
-### Table of Contents
-0. [Demo Video](#demo-video)
-0. [Installation](#installation)
-0. [Test and Demo](#test-and-demo)
-0. [Train Your Own Model](#train-your-own-model)
-0. [Acknowledgement](#acknowledgement)
-
-### Demo Video 
-<a  href="http://www.youtube.com/watch?v=oy6pWNWBt4Y"><img src="http://img.youtube.com/vi/oy6pWNWBt4Y/0.jpg" width="400" /></a>
-
 ### Installation
 Please install [Torch7](http://torch.ch/) with cuda and cudnn support. The code has been tested on Ubuntu 16.04 with Titan X Pascal and Maxwell.
 ```bash
@@ -68,9 +58,9 @@ Please follow [this tutorial to train a new model](Training.md).
 
 ### Release Timeline
 - [x] 03/20/2017 we have released the [demo video](https://www.youtube.com/watch?v=oy6pWNWBt4Y).
-- [x] 03/24/2017 We have released [ArXiv paper](https://arxiv.org/pdf/1703.06953.pdf) and demo code with pre-trained models.
-- [x] 03/30/2017 We have released the camera demo software.
+- [x] 03/24/2017 We have released [ArXiv paper](https://arxiv.org/pdf/1703.06953.pdf) and test code with pre-trained models.
 - [x] 04/09/2017 We have released the training code.
+- [x] 04/24/2017 Please checkout our PyTorch [implementation](https://github.com/zhanghang1989/PyTorch-Style-Transfer).
 
 ### Acknowledgement
 The code benefits from outstanding prior work and their implementations including:
