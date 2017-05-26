@@ -36,10 +36,12 @@ function M.createModel(opt)
 	end
 
 	local function full_shortcut(nInputPlane, nOutputPlane, stride)
-		if nInputPlane ~= nOutputPlane then
+		if nInputPlane ~= nOutputPlane or stride ~= 1 then
 			return nn.Sequential()
-				:add(pad(1,0,1,0))
-				:add(nn.SpatialFullConvolution(nInputPlane, nOutputPlane, 1, 1, stride, stride, 1, 1, 1, 1))
+				--:add(pad(1,0,1,0))
+				:add(nn.SpatialUpSamplingNearest(stride))
+ 				:add(nn.SpatialConvolution(nInputPlane, nOutputPlane, 1, 1, 1, 1))
+				--:add(nn.SpatialFullConvolution(nInputPlane, nOutputPlane, 1, 1, stride, stride, 1, 1, 1, 1))
 		else
 			return nn.Identity()
 		end
@@ -49,20 +51,20 @@ function M.createModel(opt)
 		stride = stride or 1
 		local nInputPlane = iChannels
 		iChannels = n
-  	-- Convolutions  
-  	local conv_block = nn.Sequential()
-  
-  	conv_block:add(normalization(nInputPlane))
-  	conv_block:add(nn.ReLU(true))
-  	conv_block:add(pad(1, 1, 1, 1))
-  	conv_block:add(nn.SpatialConvolution(nInputPlane, n, 3, 3, stride, stride, 0, 0))
+		-- Convolutions  
+		local conv_block = nn.Sequential()
+	
+		conv_block:add(normalization(nInputPlane))
+		conv_block:add(nn.ReLU(true))
+		conv_block:add(pad(1, 1, 1, 1))
+		conv_block:add(nn.SpatialConvolution(nInputPlane, n, 3, 3, stride, stride, 0, 0))
 
-  	conv_block:add(normalization(n))
-  	conv_block:add(nn.ReLU(true))
-  	conv_block:add(pad(1, 1, 1, 1))
-  	conv_block:add(nn.SpatialConvolution(n, n, 3, 3, 1, 1, 0, 0))
+		conv_block:add(normalization(n))
+		conv_block:add(nn.ReLU(true))
+		conv_block:add(pad(1, 1, 1, 1))
+		conv_block:add(nn.SpatialConvolution(n, n, 3, 3, 1, 1, 0, 0))
 
-  	local concat = nn.ConcatTable():add(conv_block):add(shortcut(nInputPlane, n, stride))
+		local concat = nn.ConcatTable():add(conv_block):add(shortcut(nInputPlane, n, stride))
   
   	-- Sum
   	local res_block = nn.Sequential()
@@ -115,7 +117,9 @@ function M.createModel(opt)
   	conv_block:add(nn.ReLU(true))
 
 		if stride~=1 then
-  		conv_block:add(nn.SpatialFullConvolution(n, n, 3, 3, stride, stride, 1, 1, 1, 1))
+			conv_block:add(nn.SpatialUpSamplingNearest(stride))
+  		conv_block:add(pad(1, 1, 1, 1))
+  		conv_block:add(nn.SpatialConvolution(n, n, 3, 3, 1, 1, 0, 0))
 		else
   		conv_block:add(pad(1, 1, 1, 1))
   		conv_block:add(nn.SpatialConvolution(n, n, 3, 3, 1, 1, 0, 0))
@@ -124,7 +128,9 @@ function M.createModel(opt)
   	conv_block:add(nn.ReLU(true))
   	conv_block:add(nn.SpatialConvolution(n, n*4, 1, 1, 1, 1, 0, 0))
 
-  	local concat = nn.ConcatTable():add(conv_block):add(full_shortcut(nInputPlane, n*4, stride))
+  	local concat = nn.ConcatTable()
+			:add(conv_block)
+			:add(full_shortcut(nInputPlane, n*4, stride))
   
   	-- Sum
   	local res_block = nn.Sequential()
@@ -144,7 +150,7 @@ function M.createModel(opt)
 	local model = nn.Sequential()
 	model.cNetsNum = {}
 
-	-- 512x512
+	-- 256x256
 	model:add(normalization(3))
 	model:add(pad(3, 3, 3, 3))
 	model:add(nn.SpatialConvolution(3, 64, 7, 7, 1, 1, 0, 0))
@@ -154,51 +160,33 @@ function M.createModel(opt)
 	iChannels = 64
 	local block = bottleneck -- basic_block
 	
-	-- 512x512x64
-	model:add(nn.Inspiration(iChannels))
-	table.insert(model.cNetsNum,#model)
-	model:add(normalization(iChannels))
-	model:add(nn.ReLU(true))
-	model:add(layer(block, 32, opt.model_nres, 2))
+	model:add(layer(block, 32, 1, 2))
+	model:add(layer(block, 64, 1, 2))
 
-	-- 256x256x128
+	-- 32x32x512
 	model:add(nn.Inspiration(iChannels))
 	table.insert(model.cNetsNum,#model)
 	model:add(normalization(iChannels))
 	model:add(nn.ReLU(true))
-	model:add(layer(block, 64, opt.model_nres, 2))
-	
-	-- 128x128x256
-	model:add(nn.Inspiration(iChannels))
-	table.insert(model.cNetsNum,#model)
-	model:add(normalization(iChannels))
-	model:add(nn.ReLU(true))
-	model:add(layer(block, 128, opt.model_nres, 2))
-	
-	-- 64x64x512
-	model:add(nn.Inspiration(iChannels))
-	table.insert(model.cNetsNum,#model)
-	model:add(normalization(iChannels))
-	model:add(nn.ReLU(true))
-	
+
+	for i = 1,opt.model_nres do
+		model:add(layer(block, 64, 1, 1))
+	end
+
 	block = full_bottleneck
-	model:add(layer(block, 64, opt.model_nres, 2))
-	model:add(layer(block, 32, opt.model_nres, 2))
-	model:add(layer(block, 16, opt.model_nres, 2))
+	model:add(layer(block, 32, 1, 2))
+	model:add(layer(block, 16, 1, 2))
 
 	model:add(normalization(64))
 	model:add(nn.ReLU(true))
 
 	model:add(pad(3, 3, 3, 3))
 	model:add(nn.SpatialConvolution(64, 3, 7, 7, 1, 1, 0, 0))
-	model:add(nn.Tanh())
-	model:add(nn.MulConstant(opt.tanh_constant))
+	
 	model:add(nn.TotalVariation(opt.tv_strength))
 
 	function model:setTarget(feat, dtype)
-		for i=1,#model.cNetsNum do
-			model.modules[model.cNetsNum[i]]:setTarget(feat[i]:type(dtype))
-		end
+		model.modules[model.cNetsNum[1]]:setTarget(feat[3]:type(dtype))
 	end
 	return model
 end

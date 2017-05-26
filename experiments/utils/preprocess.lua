@@ -67,8 +67,8 @@ function M.vgg.deprocess(img)
   check_input(img)
   local mean = img.new(vgg_mean):view(1, 3, 1, 1):expandAs(img)
   local perm = torch.LongTensor{3, 2, 1}
-	img = img + mean
-  return (img-img:min()):div(img:max()-img:min()):index(2, perm)
+	--img = img + mean
+  return (img + mean):div(255):index(2, perm)
 end
 
 

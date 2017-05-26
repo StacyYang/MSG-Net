@@ -61,7 +61,7 @@ function main()
     model = torch.load(opt.resume).model:type(dtype)
   else
   	print('Initializing model from scratch')
-  	models = require('models/' .. opt.model)
+  	models = require('models.' .. opt.model)
 		model = models.createModel(opt):type(dtype)
 	end
   
@@ -121,7 +121,7 @@ function main()
   for t = 1, opt.num_iterations do
 		-- set Target Here    
 		if (t-1)%opt.style_iter == 0 then
-			print('Setting Style Target')
+			--print('Setting Style Target')
 			local idx = (t-1)/opt.style_iter % #feat + 1
 			
 			local style_image = styleLoader:get(idx)

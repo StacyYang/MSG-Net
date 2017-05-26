@@ -26,10 +26,6 @@ local imgLoader = require 'utils.getImages'
 local M = {}
 
 function M.exec(opt)
-  -- Parse layer strings and weights
-  opt.style_layers, opt.style_weights =
-    utils.parse_layers(opt.style_layers, opt.style_weights)
-
 	local styleLoader = imgLoader(opt.style_image_folder)
 	if not preprocess[opt.preprocessing] then
     local msg = 'invalid -preprocessing "%s"; must be "vgg" or "resnet"'

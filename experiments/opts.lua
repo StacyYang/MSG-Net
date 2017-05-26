@@ -23,7 +23,7 @@ function M.parse(arg)
 
 	-- Generic options
 	cmd:option('-model', 'hang')
-	cmd:option('-model_nres', '2')
+	cmd:option('-model_nres', '9')
 	cmd:option('-use_instance_norm', 1)
 	cmd:option('-h5_file', 'data.h5')
 	cmd:option('-padding_type', 'reflect-start')

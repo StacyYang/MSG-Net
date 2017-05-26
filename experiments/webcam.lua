@@ -12,21 +12,6 @@ local preprocess = require 'utils.preprocess'
 local imgLoader = require 'utils.getImages'
 local opts = require 'opts'
 
---[[ Model options
-cmd:option('-models', 'models/instance_norm/candy.t7')
-cmd:option('-height', 480)
-cmd:option('-width', 640)
-
--- GPU options
-cmd:option('-gpu', -1)
-cmd:option('-backend', 'cuda')
-cmd:option('-use_cudnn', 1)
-
--- Webcam options
-cmd:option('-webcam_idx', 0)
-cmd:option('-webcam_fps', 60)
---]]
-
 local function main()
 	local opt = opts.parse(arg)
 	

@@ -8,7 +8,8 @@ local opts = require 'opts'
 
 local function main()
 	local opt = opts.parse(arg)
-	
+	opt.style_layers, opt.style_weights = utils.parse_layers(opt.style_layers, 
+																	opt.style_weights)	
 	if (opt.input_image == '') then
     error('Must give exactly one of -input_image')
   end
