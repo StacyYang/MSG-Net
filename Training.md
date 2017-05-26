@@ -37,12 +37,12 @@ th main.lua \
 -h5_file data.h5 \
 -style_image_folder images/9styles \
 -style_image_size 512 \
--checkpoint_name 16Styles \
+-checkpoint_name 9styles \
 -gpu 0
 ```
 - Test the model
 ```bash
 th test.lua \
--model 16Styles.t7 \
+-premodel 9styles.t7 \
 -input_image images/content/venice-boat.jpg
 ```
