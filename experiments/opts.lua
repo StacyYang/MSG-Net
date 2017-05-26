@@ -71,7 +71,6 @@ function M.parse(arg)
 	cmd:option('-input_image', 'images/content/venice-boat.jpg')
 	cmd:option('-output_dir', 'stylized')
 	cmd:option('-image_size', 512)
-	cmd:option('-median_filter', 3)
 
 	-- Webcam options
 	cmd:option('-webcam_idx', 0)

@@ -74,9 +74,6 @@ local function main()
 		img:sub(1,3,21,20+styleSize,21,20+styleSize):copy(style_image)
 		img_out = torch.cat(img,img_out,3)
 
-		if opt.median_filter > 0 then
-	 		img_out = utils.median_filter(img_out, opt.median_filter)
- 		end
 		collectgarbage()
 		collectgarbage()
  		return img_out

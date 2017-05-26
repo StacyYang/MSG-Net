@@ -62,9 +62,6 @@ local function main()
     
 			local img_out = model:forward(img_pre)
 			local img_out = preprocess.deprocess(img_out)[1]
-    	if opt.median_filter > 0 then
-      	img_out = utils.median_filter(img_out, opt.median_filter)
-    	end
 
       local out_path = paths.concat(opt.output_dir, i) .. '.jpg'
 			local out_path_style = paths.concat(opt.output_dir, i) .. 'style.jpg'
