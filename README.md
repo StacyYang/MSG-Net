@@ -19,7 +19,7 @@
 </table>
 
 ### Installation
-We also provide PyTorch implementation in this [repo](https://github.com/zhanghang1989/PyTorch-Style-Transfer).
+We also provide [PyTorch implementation](https://github.com/zhanghang1989/PyTorch-Style-Transfer) and [MXNet implementation](https://github.com/zhanghang1989/MXNet-Gluon-Style-Transfer).
 Please install [Torch7](http://torch.ch/) with cuda and cudnn support. The code has been tested on Ubuntu 16.04 with Titan X Pascal and Maxwell.
 ```bash
 luarocks install https://raw.githubusercontent.com/zhanghang1989/MSG-Net/master/texture-scm-1.rockspec
